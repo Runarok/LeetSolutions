@@ -20,5 +20,16 @@ The upload of solutions to this repository was automated using a Chrome extensio
 
 ---
 
+## Extension Issues
 
+The main issue I faced with this extension is that it was not as good as the GeeksforGeeks extension. There were a lot more steps needed to update the solutions, and I had to rerun the process a lot more than expected. This made the process a bit frustrating at times.
 
+---
+
+## Extra Grind Attempt
+
+For extra grind, I decided to try coding and getting answers in every programming language available on LeetCode. However, the issues with the extension made this challenge borderline unenjoyable. I attempted to do this for one program: [Two Sum](https://github.com/Runarok/LeetSolutions/tree/main/Solutions/1-two-sum). It took me about 1 hour to code it in 80% of the available programming languages, and that too for a relatively easy question. 
+
+Because of these difficulties, I’m leaving this challenge behind and will update solutions day by day until I complete the GeeksforGeeks 100%.  
+
+If you require an answer for any question in any coding language, feel free to create an issue.
