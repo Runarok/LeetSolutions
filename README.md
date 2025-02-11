@@ -36,6 +36,36 @@ If you require an answer for any question in any coding language, feel free to c
 
 ---
 
+## Extensions for Solution Files
+
+<details>
+<summary><strong>Extensions</strong></summary><br>
+
+<ul>
+  <li>C++: **.cpp**, **.cxx**, **.cc**, **.C**</li>
+  <li>Java: **.java**</li>
+  <li>Python: **.py** (Python 2 and 3 use the same extension)</li>
+  <li>C: **.c**</li>
+  <li>C#: **.cs**</li>
+  <li>JavaScript: **.js**</li>
+  <li>TypeScript: **.ts**</li>
+  <li>PHP: **.php**</li>
+  <li>Swift: **.swift**</li>
+  <li>Kotlin: **.kt**, **.kts**</li>
+  <li>Dart: **.dart**</li>
+  <li>Go: **.go**</li>
+  <li>Ruby: **.rb**</li>
+  <li>Scala: **.scala**</li>
+  <li>Rust: **.rs**</li>
+  <li>Racket: **.rkt**, **.rktd**, **.plt**</li>
+  <li>Erlang: **.erl** (source), **.beam** (compiled)</li>
+  <li>Elixir: **.ex**, **.exs** (scripts)</li>
+</ul>
+
+</details>
+
+---
+
 # 📝 Issue Template
 
 ```markdown
