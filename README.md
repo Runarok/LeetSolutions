@@ -32,4 +32,33 @@ For extra grind, I decided to try coding and getting answers in every programmin
 
 Because of these difficulties, I’m leaving this challenge behind and will update solutions day by day until I complete the GeeksforGeeks 100%.  
 
-If you require an answer for any question in any coding language, feel free to create an issue.
+If you require an answer for any question in any coding language, feel free to create an [issue](https://github.com/Runarok/LeetSolutions/issues).
+
+---
+
+# 📝 Issue Template
+
+```markdown
+**Problem Name**:  
+<!-- Provide the name of the LeetCode problem -->
+<!-- Example: Two Sum -->
+
+**LeetCode Problem Link**:  
+<!-- Provide a link to the specific problem on LeetCode -->
+<!-- Example: https://leetcode.com/problems/two-sum/ -->
+
+**Programming Language Requested**:  
+<!-- Mention the programming language you want the solution in -->
+<!-- Example: Python -->
+
+**Issue Description and Additional Information (Optional)**:  
+<!-- Provide details about the issue here, e.g., which programming languages
+  you need solutions for or any other specific requests related to the problem. -->
+<!-- Example: I need a solution for the "Two Sum" problem in Python.
+  The solution should include the most efficient algorithm for this problem. -->
+
+<!-- You can also provide any additional information, like your attempt at solving the problem,
+  if you've seen a similar solution, or anything that can help clarify the request. -->
+<!-- Example: I have tried solving the problem using brute force, but the solution isn't efficient enough.
+  I'm looking for a more optimized solution using a hash map. -->
+```
