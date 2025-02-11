@@ -42,7 +42,7 @@ If you require an answer for any question in any coding language, feel free to c
 <summary><strong>Extensions</strong></summary><br>
 
 <ul>
-  <li>C++: **.cpp**, **.cxx**, **.cc**, **.C**</li>
+  <li>C++: **.cpp**</li>
   <li>Java: **.java**</li>
   <li>Python: **.py** (Python 2 and 3 use the same extension)</li>
   <li>C: **.c**</li>
@@ -58,8 +58,8 @@ If you require an answer for any question in any coding language, feel free to c
   <li>Scala: **.scala**</li>
   <li>Rust: **.rs**</li>
   <li>Racket: **.rkt**, **.rktd**, **.plt**</li>
-  <li>Erlang: **.erl** (source), **.beam** (compiled)</li>
-  <li>Elixir: **.ex**, **.exs** (scripts)</li>
+  <li>Erlang: **.erl** (source)(compiled)</li>
+  <li>Elixir: **.ex**</li>
 </ul>
 
 </details>
