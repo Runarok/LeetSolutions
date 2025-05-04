@@ -4,27 +4,21 @@ class Solution {
      * @return Integer
      */
     function numEquivDominoPairs($dominoes) {
-        $count = [];
+        // A 2D array to store the counts of each domino in a normalized form.
+        $count = array_fill(0, 10, array_fill(0, 10, 0));
         $pairs = 0;
 
+        // Process each domino
         foreach ($dominoes as $domino) {
-            // Ensure that the smaller number is first
-            if ($domino[0] > $domino[1]) {
-                $temp = $domino[0];
-                $domino[0] = $domino[1];
-                $domino[1] = $temp;
-            }
+            // Ensure that the smaller number comes first (normalized form)
+            $a = min($domino[0], $domino[1]);
+            $b = max($domino[0], $domino[1]);
 
-            // Create a tuple key and update the count in the hashmap
-            $key = $domino[0] * 10 + $domino[1]; // We can use the two numbers to create a unique key
+            // Add the count of previous equivalent dominoes to the pair count
+            $pairs += $count[$a][$b];
 
-            // Count how many times we've seen this domino
-            if (isset($count[$key])) {
-                $pairs += $count[$key];
-                $count[$key]++;
-            } else {
-                $count[$key] = 1;
-            }
+            // Increment the count for this domino
+            $count[$a][$b]++;
         }
 
         return $pairs;
