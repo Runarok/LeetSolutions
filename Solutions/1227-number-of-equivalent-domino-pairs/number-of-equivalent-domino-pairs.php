@@ -5,27 +5,28 @@ class Solution {
      */
     function numEquivDominoPairs($dominoes) {
         $count = [];
-        
-        // Normalize each domino and count the occurrences
-        foreach ($dominoes as $domino) {
-            // Sort the domino to ensure the smaller number is always first
-            $normalized = [$domino[0], $domino[1]];
-            sort($normalized);
-            $key = implode(",", $normalized);  // Create a string key for the pair
-            if (!isset($count[$key])) {
-                $count[$key] = 0;
-            }
-            $count[$key]++;
-        }
-        
-        // Calculate the number of equivalent pairs
         $pairs = 0;
-        foreach ($count as $freq) {
-            if ($freq > 1) {
-                $pairs += $freq * ($freq - 1) / 2;  // Combination of 2 from freq items
+
+        foreach ($dominoes as $domino) {
+            // Ensure that the smaller number is first
+            if ($domino[0] > $domino[1]) {
+                $temp = $domino[0];
+                $domino[0] = $domino[1];
+                $domino[1] = $temp;
+            }
+
+            // Create a tuple key and update the count in the hashmap
+            $key = $domino[0] * 10 + $domino[1]; // We can use the two numbers to create a unique key
+
+            // Count how many times we've seen this domino
+            if (isset($count[$key])) {
+                $pairs += $count[$key];
+                $count[$key]++;
+            } else {
+                $count[$key] = 1;
             }
         }
-        
+
         return $pairs;
     }
 }
