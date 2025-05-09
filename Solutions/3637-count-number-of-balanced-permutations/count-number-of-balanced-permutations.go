@@ -1,12 +1,12 @@
 const MOD = 1_000_000_007
 
-// Function to count the number of balanced permutations of the given digits string `num`
+// Optimized function to count the number of balanced permutations of the given digits string `num`
 func countBalancedPermutations(num string) int {
 	// Total sum of digits and length of the number string
 	tot, n := 0, len(num)
 	// Array to store the frequency of each digit (0-9)
 	cnt := make([]int, 10)
-	
+
 	// Calculate the total sum of digits and the frequency of each digit
 	for _, ch := range num {
 		d := int(ch - '0')  // Convert char to integer
@@ -42,16 +42,8 @@ func countBalancedPermutations(num string) int {
 	}
 
 	// Memoization table for storing intermediate results during DFS
-	memo := make([][][]int, 10)
-	for i := range memo {
-		memo[i] = make([][]int, target+1)
-		for j := range memo[i] {
-			memo[i][j] = make([]int, maxOdd+1)
-			for k := range memo[i][j] {
-				memo[i][j][k] = -1  // Initialize all memo values to -1 (not computed)
-			}
-		}
-	}
+	// Using a map to reduce memory usage
+	memo := make(map[[3]int]int)
 
 	// Depth-First Search (DFS) function to explore possible configurations
 	var dfs func(pos, curr, oddCnt int) int
@@ -71,9 +63,9 @@ func countBalancedPermutations(num string) int {
 			return 0
 		}
 
-		// If the result for this state is already computed, return it
-		if memo[pos][curr][oddCnt] != -1 {
-			return memo[pos][curr][oddCnt]
+		// If the result for this state is already computed, return it from the memo map
+		if res, exists := memo[[3]int{pos, curr, oddCnt}]; exists {
+			return res
 		}
 
 		// Number of even-positioned slots that can still be filled
@@ -93,7 +85,7 @@ func countBalancedPermutations(num string) int {
 		}
 
 		// Memorize the result for the current state
-		memo[pos][curr][oddCnt] = res
+		memo[[3]int{pos, curr, oddCnt}] = res
 		return res
 	}
 
