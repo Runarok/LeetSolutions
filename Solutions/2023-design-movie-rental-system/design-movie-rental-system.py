@@ -66,3 +66,4 @@ class MovieRentingSystem:
         sorted by price, then shop ID, then movie ID.
         """
         return [[shop, movie] for price, shop, movie in self.rented[:5]]
+    
