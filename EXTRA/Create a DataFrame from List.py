@@ -1,4 +1,3 @@
-```python
 import pandas as pd
 from typing import List
 
@@ -32,4 +31,3 @@ def createDataframe(student_data: List[List[int]]) -> pd.DataFrame:
 
     # Return the created DataFrame
     return df
-```
