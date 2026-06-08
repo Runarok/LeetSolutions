@@ -9,60 +9,68 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
 class Solution {
 public:
     TreeNode* createBinaryTree(vector<vector<int>>& descriptions) {
         
-        // Map to store value -> TreeNode*
+        // Maps a node value to its TreeNode pointer.
+        // This allows us to quickly access/create nodes.
         unordered_map<int, TreeNode*> nodes;
         
-        // Set to keep track of all nodes that appear as children
+        // Stores every value that appears as a child.
+        // Root will never appear here.
         unordered_set<int> children;
         
-        // --------------------------------------------------
-        // STEP 1: Create nodes and build parent-child links
-        // --------------------------------------------------
+        // Process every description
         for (auto &desc : descriptions) {
             
-            int parentVal = desc[0];
-            int childVal  = desc[1];
-            int isLeft    = desc[2];
+            // Extract information
+            int parent = desc[0];
+            int child = desc[1];
+            int isLeft = desc[2];
             
-            // Create parent node if it doesn't exist
-            if (nodes.find(parentVal) == nodes.end()) {
-                nodes[parentVal] = new TreeNode(parentVal);
+            // If parent node doesn't exist yet,
+            // create it and store it.
+            if (nodes.find(parent) == nodes.end()) {
+                nodes[parent] = new TreeNode(parent);
             }
             
-            // Create child node if it doesn't exist
-            if (nodes.find(childVal) == nodes.end()) {
-                nodes[childVal] = new TreeNode(childVal);
+            // If child node doesn't exist yet,
+            // create it and store it.
+            if (nodes.find(child) == nodes.end()) {
+                nodes[child] = new TreeNode(child);
             }
             
-            // Attach child to the correct side
+            // Connect parent with child
             if (isLeft == 1) {
-                nodes[parentVal]->left = nodes[childVal];
+                
+                // Child is the left child
+                nodes[parent]->left = nodes[child];
+                
             } else {
-                nodes[parentVal]->right = nodes[childVal];
+                
+                // Child is the right child
+                nodes[parent]->right = nodes[child];
             }
             
             // Mark this node as a child
-            children.insert(childVal);
+            children.insert(child);
         }
         
-        // ----------------------------------------
-        // STEP 2: Find the root (never a child)
-        // ----------------------------------------
-        for (auto &pair : nodes) {
-            int nodeVal = pair.first;
+        // Find the root.
+        // Root is the node that never appears as a child.
+        for (auto &desc : descriptions) {
             
-            // Root node does NOT appear in children set
-            if (children.find(nodeVal) == children.end()) {
-                return pair.second;
+            int parent = desc[0];
+            
+            // If parent is not present in the child set,
+            // it must be the root.
+            if (children.find(parent) == children.end()) {
+                return nodes[parent];
             }
         }
         
-        // Problem guarantees a valid tree, so this won't happen
+        // According to constraints, a valid root always exists.
         return nullptr;
     }
 };
