@@ -1,29 +1,30 @@
 class Solution:
-    def checkOverlap(self, radius: int, xCenter: int, yCenter: int, 
-                     x1: int, y1: int, x2: int, y2: int) -> bool:
-        """
-        radius: radius of the circle
-        (xCenter, yCenter): center of the circle
-        (x1, y1): bottom-left corner of rectangle
-        (x2, y2): top-right corner of rectangle
-        Returns True if circle and rectangle overlap, False otherwise
-        """
+    def checkOverlap(
+        self,
+        radius: int,
+        xCenter: int,
+        yCenter: int,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
+    ) -> bool:
+        # Step 1: Find the x-coordinate on the rectangle closest to the circle's center.
+        # We clamp xCenter to be within the bounds [x1, x2].
+        closest_x = max(x1, min(xCenter, x2))
 
-        # Step 1: Find the closest point on the rectangle to the circle center
-        # Clamp the x-coordinate of the circle center between x1 and x2
-        # This ensures the point lies on the rectangle's boundary or inside
-        closestX = max(x1, min(xCenter, x2))
+        # Step 2: Find the y-coordinate on the rectangle closest to the circle's center.
+        # We clamp yCenter to be within the bounds [y1, y2].
+        closest_y = max(y1, min(yCenter, y2))
 
-        # Clamp the y-coordinate of the circle center between y1 and y2
-        closestY = max(y1, min(yCenter, y2))
+        # Step 3: Compute the horizontal and vertical distances from the center to the closest point.
+        dist_x = xCenter - closest_x
+        dist_y = yCenter - closest_y
 
-        # Step 2: Compute the distance squared between the circle center and this closest point
-        # distance_squared = (dx)^2 + (dy)^2
-        # This avoids using square root which is unnecessary for comparison
-        dx = closestX - xCenter
-        dy = closestY - yCenter
-        distance_squared = dx * dx + dy * dy
+        # Step 4: Calculate the squared distance using the Pythagorean theorem.
+        # Using squared values avoids precision loss from floating-point square root operations.
+        distance_squared = (dist_x * dist_x) + (dist_y * dist_y)
 
-        # Step 3: Compare distance squared with radius squared
-        # If distance squared <= radius squared, circle overlaps rectangle
+        # Step 5: Check if the closest point lies inside or on the boundary of the circle.
+        # Overlap occurs if distance_squared <= radius^2.
         return distance_squared <= radius * radius
